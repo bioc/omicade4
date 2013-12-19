@@ -41,7 +41,7 @@ function(x, var=NA, axes=1:2,
   
   
   n <- length(df)
-  n <- round(n/2)*2
+  n <- ceiling(n/2)*2
   
   rep <- var
   if (is.matrix(layout))
