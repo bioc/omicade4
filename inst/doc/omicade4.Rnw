@@ -228,43 +228,44 @@ The output plot is shown in figure \ref{genespace1}.
 
 
 % ------------------------------------------ S3 for cia -----------------------------------------
-\subsection{S3 Methods for \Rclass{cia} objects}
-Except of being applied on \Rclass{mcia} objects, the functions \Rfunction{selectVar} and \Rfunction{plotVar} 
-could also be applied on S3 objects of the class \Rclass{cia}, which are returned by the function
-\Rfunction{cia} from \Biocpkg{made4} package. 
-For example, figure \ref{cia} shows the result of co-inertia analysis.
-<<coinertia_made4, fig=TRUE, include=FALSE>>=
-library(made4)
-coin <- cia(NCI60_4arrays$agilent, NCI60_4arrays$hgu133)
-plot(coin)
-@
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics{omicade4-coinertia_made4}
-\caption{The CIA plot of the NCI-60 Agilent and HGU 133 data}
-\label{cia}
-\end{center}
-\end{figure}
-
-Next, we can select top genes at the end of each axis with the following commands: 
-<<selectvar_cia>>=
-gstat_cia <- selectVar(coin, df1.a1.lim=c(-Inf, -0.02), df1.a2.lim=c(-Inf, Inf))
-gstat_cia
-@
-
-Alternatively, we can plot the genes of interest in variable space with the command below (Figure \ref{ciaSelmol}):
-<<plotvar_cia, fig=TRUE, include=FALSE, results=hide>>=
-plotVar(coin, var=c("S100B", "S100A1", "SERPINF1", "TRPM8"), var.lab=TRUE )
-@
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics{omicade4-plotvar_cia}
-\caption{Visualization of genes of interest in CIA}
-\label{ciaSelmol}
-\end{center}
-\end{figure}
+% ----------- This part is temporay commentted until made4 package updated ----------------------
+% \subsection{S3 Methods for \Rclass{cia} objects}
+% Except of being applied on \Rclass{mcia} objects, the functions \Rfunction{selectVar} and \Rfunction{plotVar} 
+% could also be applied on S3 objects of the class \Rclass{cia}, which are returned by the function
+% \Rfunction{cia} from \Biocpkg{made4} package. 
+% For example, figure \ref{cia} shows the result of co-inertia analysis.
+% <<coinertia_made4, fig=TRUE, include=FALSE>>=
+% library(made4)
+% coin <- cia(NCI60_4arrays$agilent, NCI60_4arrays$hgu133)
+% plot(coin)
+% @
+% 
+% \begin{figure}[h!]
+% \begin{center}
+% \includegraphics{omicade4-coinertia_made4}
+% \caption{The CIA plot of the NCI-60 Agilent and HGU 133 data}
+% \label{cia}
+% \end{center}
+% \end{figure}
+% 
+% Next, we can select top genes at the end of each axis with the following commands: 
+% <<selectvar_cia>>=
+% gstat_cia <- selectVar(coin, df1.a1.lim=c(-Inf, -0.02), df1.a2.lim=c(-Inf, Inf))
+% gstat_cia
+% @
+% 
+% Alternatively, we can plot the genes of interest in variable space with the command below (Figure \ref{ciaSelmol}):
+% <<plotvar_cia, fig=TRUE, include=FALSE, results=hide>>=
+% plotVar(coin, var=c("S100B", "S100A1", "SERPINF1", "TRPM8"), var.lab=TRUE )
+% @
+% 
+% \begin{figure}[h!]
+% \begin{center}
+% \includegraphics{omicade4-plotvar_cia}
+% \caption{Visualization of genes of interest in CIA}
+% \label{ciaSelmol}
+% \end{center}
+% \end{figure}
 
 \bibliographystyle{unsrt}  
 \bibliography{omicade4}
