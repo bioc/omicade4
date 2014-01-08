@@ -58,7 +58,7 @@ The \Biocpkg{omicade4} package and its dependencies can be installed using the \
 commands in R:
 <<Installation>>=
 source("http://bioconductor.org/biocLite.R")
-biocLite("omicade4")
+#biocLite("omicade4")
 @
 
 
