@@ -126,11 +126,11 @@ mcia(df.list, cia.nf = 2, cia.scan = FALSE, nsc = T, svd = TRUE)
 }
 }
 
-%\references{
-%  Meng C, Kuster B, Culhane AC, and Gholami AM. A multivariate 
-%  approach to the integration of multi-omics datasets. 
-%  BMC bioinformatics (under review)
-%}
+\references{
+  Meng C, Kuster B, Culhane AC, and Gholami AM. A multivariate 
+  approach to the integration of multi-omics datasets. 
+  BMC bioinformatics (2014)
+}
 \author{
     Chen Meng
 }
