@@ -6,14 +6,14 @@ citEntry(entry="Article",
                       as.person("Bernhard Kuster"),
                       as.person("Aedin Culhane"),
                       as.person("Amin Moghaddas Gholami")),
-  journal = "BMC bioinformatics",
+  journal = "BMC Bioinformatics",
   volume = "15",
   number = "",
-  pages = "",
+  pages = "162",
   year = "2014",
   url = "",
   doi = "",
   textVersion = paste("Chen Meng, Bernhard Kuster, Aedin Culhane and Amin Moghaddas Gholami (2014):", 
                "A multivariate approach to the integration of multi-omics datasets.",
-               "BMC bioinformatics")
+               "BMC bioinformatics 15:162")
 )

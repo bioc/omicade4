@@ -127,9 +127,9 @@ mcia(df.list, cia.nf = 2, cia.scan = FALSE, nsc = T, svd = TRUE)
 }
 
 \references{
-  Meng C, Kuster B, Culhane AC, and Gholami AM. A multivariate 
+  Meng C, Kuster B, Culhane AC, and Gholami AM. (2014) A multivariate 
   approach to the integration of multi-omics datasets. 
-  BMC bioinformatics (2014)
+  BMC bioinformatics 15:162.
 }
 \author{
     Chen Meng

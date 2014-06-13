@@ -30,17 +30,9 @@ Maintainer: Chen Meng <chen.meng@tum.de>
 }
 
 \references{
-  Meng C, Kuster B, Culhane AC and Gholami AM. A multivariate 
+  Meng C, Kuster B, Culhane AC and Gholami AM. (2014) A multivariate 
   approach to the integration of multi-omics datasets. 
-  (Manuscript under preparation) 
-
-  Culhane AC, Thioulouse J, Perriere G, Higgins DG. (2005)
-  MADE4: an R package for multivariate analysis of gene
-  expression data.Bioinformatics. 21(11):2789-90. 
-  
-  S. Dray and A.B. Dufour. (2007) The ade4 package: implementing 
-  the duality diagram for ecologists. Journal of Statistical 
-  Software 22(4):1-20.
+  BMC Bioinformatics 15:162. 
 }
 
 \keyword{multivariate}
