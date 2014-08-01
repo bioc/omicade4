@@ -63,33 +63,38 @@ function(x, axis1=1, axis2=2,
     text(x=syn[, axis1], y=syn[, axis2], lab)
   }
   
-  if (legend && any(c(length(cl) != 1, length(pl) != 1, !is.null(phenovec)))) {
-    
-    ple <- c()
-    if (length(pl) != 1) {
-      pl <- pl
-      ple <- names(x$coa)
+  if (is.logical(legend)) {
+    if (legend && any(c(length(cl) != 1, length(pl) != 1, !is.null(phenovec)))) {
+      
+      ple <- c()
+      if (length(pl) != 1) {
+        pl <- pl
+        ple <- names(x$coa)
+      }
+      
+      cle <- c()
+      if (length(cl) == nrow(syn)) {
+        cl <- cl
+        cle <- rownames(syn)
+      } else if (length(cl) == 1 && !is.null(phenovec)) {
+        cl <- sort(unique(c(phenovec)))
+        cle <- levels(phenovec)
+      } else if (length(cl) == length(levels(phenovec))) {
+        cl <- cl
+        cle <- levels(phenovec)
+      }
+      
+      pch.i <- c(pl, rep(20, length(cl)))
+      if (length(pl)==1)
+        col.i <- cl else
+          col.i <- c(rep(1, ndata), cl)
+      le.i <- c(ple, cle)
+      
+      legend("topleft", fill=FALSE, col=col.i, pch=pch.i, legend=le.i, border=F, bty="n")
     }
-    
-    cle <- c()
-    if (length(cl) == nrow(syn)) {
-      cl <- cl
-      cle <- rownames(syn)
-    } else if (length(cl) == 1 && !is.null(phenovec)) {
-      cl <- sort(unique(c(phenovec)))
-      cle <- levels(phenovec)
-    } else if (length(cl) == length(levels(phenovec))) {
-      cl <- cl
-      cle <- levels(phenovec)
-    }
-    
-    pch.i <- c(pl, rep(20, length(cl)))
-    if (length(pl)==1)
-      col.i <- cl else
-        col.i <- c(rep(1, ndata), cl)
-    le.i <- c(ple, cle)
-    
-    legend("topleft", fill=FALSE, col=col.i, pch=pch.i, legend=le.i, border=F, bty="n")
-  }
+  } else if (is.character(legend) & length(legend) == 1) {
+    eval(parse(text=legend))
+  } else 
+    stop("unknown legend setting")
   box()
 }

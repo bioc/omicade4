@@ -49,10 +49,13 @@ mcia(df.list, cia.nf = 2, cia.scan = FALSE, nsc = T, svd = TRUE)
   \item{sample.color}{
     Defining colours of samples for plotting sample space, the length of this 
     argument should be either one (uniform color) or the same with the 
-    column number of \code{data.frame} in \code{df.list}.
+    column number of \code{data.frame} in \code{df.list}. When sample
+    size is big, \code{phenovec} should be used to distinguish 
+    subgroups (See examples).
 }
   \item{sample.legend}{
-    A logical indicating if the legend for sample space should be drawn.
+    A logical indicating if the legend for sample space should be drawn
+    or a charater string passed to draw self-defined legend (see example).
 }
   \item{df.color}{
     Defining the colours for plotting variables (genes) from different \code{data.frame}.
@@ -68,7 +71,7 @@ mcia(df.list, cia.nf = 2, cia.scan = FALSE, nsc = T, svd = TRUE)
 }
   \item{phenovec}{
     A factor for plotting sample space, phenovec could be 
-    used to distinguish individuals in the \code{data.frame}s.
+    used to distinguish individuals in the \code{data.frame}s (see examples).
 }
   \item{x}{
     An object of class \code{mcia}
@@ -91,7 +94,7 @@ mcia(df.list, cia.nf = 2, cia.scan = FALSE, nsc = T, svd = TRUE)
     profiling for the same set of cell lines, patients and etc. 
 
     \code{mcia} calls \code{\link[ade4:dudi.nsc]{dudi.nsc}}, 
-    \code{\link[ade4:ktab]{ktab}} and \code{\link[ade4:mcoa]{mcoa}} in ade4
+    \code{\link[ade4:ktab]{ktab}} and \code{\link[ade4:mcoa]{mcoa}} in ADE4
     packages.
 
     \bold{Plotting and visualizing \code{mcia} results}
@@ -126,11 +129,11 @@ mcia(df.list, cia.nf = 2, cia.scan = FALSE, nsc = T, svd = TRUE)
 }
 }
 
-\references{
-  Meng C, Kuster B, Culhane AC, and Gholami AM. (2014) A multivariate 
-  approach to the integration of multi-omics datasets. 
-  BMC bioinformatics 15:162.
-}
+%\references{
+%  Meng C, Kuster B, Culhane AC, and Gholami AM. A multivariate 
+%  approach to the integration of multi-omics datasets. 
+%  BMC bioinformatics (under review)
+%}
 \author{
     Chen Meng
 }
@@ -144,9 +147,16 @@ data(NCI60_4arrays)
 mcoin <- mcia(NCI60_4arrays)
 plot(mcoin, sample.lab=FALSE, df.col=4:7)
 
-colcode <- sapply(strsplit(colnames(NCI60_4arrays$agilent), split="\\\."), 
+colcode <- sapply(strsplit(colnames(NCI60_4arrays$agilent), split="\\."), 
                   function(x) x[1])
+
+# "sample.color" should be used when sample number is small, this is not proper use here 
 plot(mcoin, sample.lab=FALSE, sample.color=as.factor(colcode))
+# phenovec should be used to use color distinguishing subtypes/groups (when sample size is large)
+plot(mcoin, sample.lab=FALSE, phenovec=as.factor(colcode))
+# or use self defined legend
+leg <- 'legend("topleft", legend=unique(colcode), pch=20, col=1:9, border=FALSE, bty="n")'
+plot(mcoin, sample.lab=FALSE, sample.legend=leg, sample.color=as.factor(colcode))
 
 }
 
