@@ -147,8 +147,7 @@ data(NCI60_4arrays)
 mcoin <- mcia(NCI60_4arrays)
 plot(mcoin, sample.lab=FALSE, df.col=4:7)
 
-colcode <- sapply(strsplit(colnames(NCI60_4arrays$agilent), split="\\."), 
-                  function(x) x[1])
+colcode <- sapply(strsplit(colnames(NCI60_4arrays$agilent), split="\\\."), "[", 1)
 
 # "sample.color" should be used when sample number is small, this is not proper use here 
 plot(mcoin, sample.lab=FALSE, sample.color=as.factor(colcode))
