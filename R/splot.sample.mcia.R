@@ -17,6 +17,11 @@ function(x, axis1=1, axis2=2,
   pl <- pch
   cl <- col
   
+  if (is.logical(legend)) {
+      if (legend && is.null(phenovec) && length(col) == 1)
+    warning("legend=TRUE is ignored since neither col nor phenovec is used to distinguish
+      observations.")
+  }
   if (!is.null(phenovec) && length(phenovec) != nrow(syn))
     stop("the length of phenovec should be the same with # of samples")
   if (!axis1 %in% 1:ncol(dfxy))
@@ -64,13 +69,7 @@ function(x, axis1=1, axis2=2,
   }
   
   if (is.logical(legend)) {
-    if (legend && any(c(length(cl) != 1, length(pl) != 1, !is.null(phenovec)))) {
-      
-      ple <- c()
-      if (length(pl) != 1) {
-        pl <- pl
-        ple <- names(x$coa)
-      }
+    if (legend && any(c(length(cl) != 1, !is.null(phenovec)))) {
       
       cle <- c()
       if (length(cl) == nrow(syn)) {
@@ -83,12 +82,9 @@ function(x, axis1=1, axis2=2,
         cl <- cl
         cle <- levels(phenovec)
       }
-      
-      pch.i <- c(pl, rep(20, length(cl)))
-      if (length(pl)==1)
-        col.i <- cl else
-          col.i <- c(rep(1, ndata), cl)
-      le.i <- c(ple, cle)
+      pch.i <- 20
+      col.i <- cl
+      le.i <- cle
       
       legend("topleft", fill=FALSE, col=col.i, pch=pch.i, legend=le.i, border=F, bty="n")
     }

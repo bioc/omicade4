@@ -12,7 +12,7 @@
 \usage{
 mcia(df.list, cia.nf = 2, cia.scan = FALSE, nsc = T, svd = TRUE)
 \method{plot}{mcia}(x, axes = 1:2, 
-  sample.lab = TRUE, sample.legend = TRUE, sample.color = 1, 
+  sample.lab = TRUE, sample.legend = FALSE, sample.color = 1, 
   phenovec = NULL, df.color = 1,
   df.pch = NA, gene.nlab = 0, ...)
 }
