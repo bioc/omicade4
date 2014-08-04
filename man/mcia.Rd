@@ -150,9 +150,9 @@ plot(mcoin, sample.lab=FALSE, df.col=4:7)
 colcode <- sapply(strsplit(colnames(NCI60_4arrays$agilent), split="\\\."), "[", 1)
 
 # "sample.color" should be used when sample number is small, this is not proper use here 
-plot(mcoin, sample.lab=FALSE, sample.color=as.factor(colcode))
+plot(mcoin, sample.lab=FALSE, sample.color=as.factor(colcode), sample.legend=TRUE)
 # phenovec should be used to use color distinguishing subtypes/groups (when sample size is large)
-plot(mcoin, sample.lab=FALSE, phenovec=as.factor(colcode))
+plot(mcoin, sample.lab=FALSE, phenovec=as.factor(colcode), sample.legend=TRUE)
 # or use self defined legend
 leg <- 'legend("topleft", legend=unique(colcode), pch=20, col=1:9, border=FALSE, bty="n")'
 plot(mcoin, sample.lab=FALSE, sample.legend=leg, sample.color=as.factor(colcode))
